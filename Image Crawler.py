@@ -80,4 +80,6 @@ def main():
     # if url is not correct or internet is not connected
     except Exception as e:print("Url is Not Found! OR",e)
 
+##########################################################CALL MAIN FUNCTION###############################################################
+
 main()
