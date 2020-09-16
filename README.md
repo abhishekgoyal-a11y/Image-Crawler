@@ -20,7 +20,7 @@ URL:- https://www.google.com/search?q=amirkhan&rlz=1C1CHBF_enIN828IN828&sxsrf=AL
 
 What required:- URL
 
-Example:- Yotube video
+Example:- YouTube video
 
 URL:- https://www.youtube.com/watch?v=j2WaSbyjRm8
 
