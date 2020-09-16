@@ -15,3 +15,17 @@ What required:- URL
 Example:- Amirkhan Images
 
 URL:- https://www.google.com/search?q=amirkhan&rlz=1C1CHBF_enIN828IN828&sxsrf=ALeKk005HXD_iy7Ftgjx9J-bF8i0NKfx9Q:1600179467455&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiL4e-FrevrAhUBXn0KHS6CD9MQ_AUoAnoECB8QBA&biw=1366&bih=625
+
+Video Crawler will download video
+
+What required:- URL
+
+Example:- Yotube video
+
+URL:- https://www.youtube.com/watch?v=j2WaSbyjRm8
+
+Example:- web video link
+
+URL:- https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4
+
+
