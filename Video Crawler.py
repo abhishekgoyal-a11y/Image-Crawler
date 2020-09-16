@@ -74,6 +74,7 @@ def main():
 		video_link =input("For one video press 1 and for multiple videos press 2 and for quit press q:- ")
 
 		if video_link=="1":
+			video_link=input("Enter URL:- ")
 			if video_link.startswith("https://www.youtube.com"):
 				youtube_video_download(video_link)
 			else:
