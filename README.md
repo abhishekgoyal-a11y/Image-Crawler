@@ -1,4 +1,4 @@
-# Image-Crawler
+# Image Crawler
 
 First part will download only one image
 
@@ -16,7 +16,7 @@ Example:- Amirkhan Images
 
 URL:- https://www.google.com/search?q=amirkhan&rlz=1C1CHBF_enIN828IN828&sxsrf=ALeKk005HXD_iy7Ftgjx9J-bF8i0NKfx9Q:1600179467455&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiL4e-FrevrAhUBXn0KHS6CD9MQ_AUoAnoECB8QBA&biw=1366&bih=625
 
-Video Crawler will download video
+# Video Crawler
 
 What required:- URL
 
