@@ -42,10 +42,12 @@ def url_video_download(video_links):
 def youtube_video_download(video_link):
 	try:
 		if not isinstance(video_link,list):
+			print("Video Downlaod start!")
 			with youtube_dl.YoutubeDL({}) as ydl:
 				ydl.download([video_link])
 			print("Successfully Videos Downloaded!")
 		if isinstance(video_link,list):
+			print("Video Downlaod start!")
 			with youtube_dl.YoutubeDL({}) as ydl:
 				ydl.download(video_link)
 			print("Successfully Videos Downloaded!")
