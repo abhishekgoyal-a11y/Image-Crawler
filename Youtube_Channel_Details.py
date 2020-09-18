@@ -260,8 +260,4 @@ class PlayListDetails:
 		return video_size
 
 
-y = PlayListDetails('https://www.youtube.com/playlist?list=')
-print(y.PlaylistSize())
-
-	
-# y.DownloadPlaylistVideos(list_of_video=[10])
+y = PlayListDetails()
