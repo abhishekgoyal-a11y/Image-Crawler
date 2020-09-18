@@ -54,6 +54,20 @@ def youtube_video_download(video_link):
 	except:
 		print("Error:- Invalid URL or Internet is not Connected!")
 
+
+##########################################################GET YOUTUBE VIDEO SIZE ###########################################################
+
+def yotube_video_size(video_url):
+	# getting video 
+	video = pafy.new(video_url) 
+	# getting all the available streams 
+	streams = video.allstreams 
+	# selecting one stream 
+	stream = streams[18] 
+	# getting file size of stream 
+	value = stream.get_filesize() 
+	return value
+
 #######################################################APPENDING URLS#######################################################################
 
 urls = []
