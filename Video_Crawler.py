@@ -3,6 +3,7 @@
 
 import youtube_dl
 import requests
+import pafy
 
 #####################################################DOWNLOAD VIDEO FROM URL################################################################
 
@@ -62,8 +63,12 @@ def yotube_video_size(video_url):
 	video = pafy.new(video_url) 
 	# getting all the available streams 
 	streams = video.allstreams 
-	# selecting one stream 
-	stream = streams[18] 
+
+	for j,i in enumerate(streams):
+		if "normal:mp4@1280x720" in str(i):
+			# selecting one stream 
+			stream = streams[j]
+
 	# getting file size of stream 
 	value = stream.get_filesize() 
 	return value
