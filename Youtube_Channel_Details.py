@@ -18,22 +18,27 @@ class YoutubeChannelDetails:
 		if self.status==200:
 			try:
 				# Checking the pattern(get username)
-				pattern = re.compile(r'https://www.youtube.com/user/\w+')
-				matches = pattern.findall(self.channel_url)
-				self.username=matches[0][29:]
-
-				ch_request = youtube.channels().list(
-					part='contentDetails,statistics',
-					forUsername=self.username,
-					)
-
-				ch_response = ch_request.execute()
-				self.Items = ch_response["items"]
-				self.channel_id = self.Items[0]['id']
+				if self.channel_url.startswith("https://www.youtube.com/user/"):
+					self.username=self.channel_url[len("https://www.youtube.com/user/"):]
+					ch_request = youtube.channels().list(
+						part='contentDetails,statistics',
+						forUsername=self.username,
+						)
+					ch_response = ch_request.execute()
+					self.Items = ch_response["items"]
+					self.channel_id = self.Items[0]['id']
+				elif self.channel_url.startswith("https://www.youtube.com/channel/"):
+					channel_id = self.channel_url[len("https://www.youtube.com/channel/"):]
+					ch_request = youtube.channels().list(
+						part='contentDetails,statistics',
+						id=channel_id,
+						)
+					ch_response = ch_request.execute()
+					self.Items = ch_response["items"]
 			except:
-				return "Invalid URL!"
+				return 
 
-	# channel details(subscriber,total views,number of videos)
+	# channel details(subscriber,number of videos,total views)
 	def ChannelDetails(self):
 		if self.status==200:
 			try:
@@ -103,11 +108,11 @@ class PlayListDetails:
 						maxResults=50,
 						pageToken=self.nextPageToken
 						)
-					pl_response = pl_request.execute()
+					self.pl_response = pl_request.execute()
 
-					for item in pl_response['items']:
+					for item in self.pl_response['items']:
 						self.video_ids.append(item['contentDetails']['videoId'])
-					self.nextPageToken = pl_response.get('nextPageToken')
+					self.nextPageToken = self.pl_response.get('nextPageToken')
 
 					if not self.nextPageToken:
 						break
@@ -160,7 +165,7 @@ class PlayListDetails:
 		except:
 			return "Invalid URL!"
 
-	def PlaylistAllVideos(self):
+	def PlaylistAllVideosLink(self):
 		if self.video_ids!=[]:
 			for video in self.video_ids:
 				self.video_links.append(f"https://www.youtube.com/watch?v={video}")
@@ -196,7 +201,7 @@ class PlayListDetails:
 			tos = kwargs['tos']
 		if 'list_of_video' in kwargs.keys():
 			list_of_video = kwargs['list_of_video']
-		self.PlaylistAllVideos()
+		self.PlaylistAllVideosLink()
 		if no_of_videos==None and froms==None and tos==None and list_of_video==None:
 			youtube_video_download(self.video_links)
 		else:
@@ -254,10 +259,32 @@ class PlayListDetails:
 	# Size of playlist in Bytes
 	def PlaylistSize(self):
 		video_size=0
-		self.PlaylistAllVideos()
+		self.PlaylistAllVideosLink()
 		for video_link in self.video_links:
 			video_size+=yotube_video_size(video_link)
 		return video_size
 
+	def PlaylistDetails(self):
+		for item in self.pl_response['items']:
+			video_id=item['contentDetails']['videoId']
 
-y = PlayListDetails()
+			video_request=youtube.videos().list(
+				part='contentDetails,snippet',
+				id=video_id
+			)
+			video_response = video_request.execute()
+			url=video_response['items'][0]['snippet']['thumbnails']['high']['url']
+			duration=video_response['items'][0]['contentDetails']['duration']
+			channelTitle=video_response['items'][0]['snippet']['channelTitle']
+			VideoTitle=video_response['items'][0]['snippet']['title']
+			yield (url
+			,duration
+			,channelTitle
+			,VideoTitle)
+			
+
+
+
+
+y = YoutubeChannelDetails("https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ")
+print(y.ChannelDetails())
