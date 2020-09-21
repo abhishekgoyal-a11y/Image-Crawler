@@ -97,6 +97,15 @@ class Video:
 		)
 		video_response = video_request.execute()
 
+		video_request1=youtube.videos().list(
+			part='snippet',
+			id=self.video_id
+		)
+		video_response1 = video_request1.execute()
+
+		title = video_response1['items'][0]['snippet']['localized']['title']
+		image_url = video_response1['items'][0]['snippet']['thumbnails']['high']['url']
+
 		duration = video_response['items'][0]['contentDetails']['duration']
 
 		hours = regex(duration,f'(\d+)H')
@@ -112,6 +121,8 @@ class Video:
 		viewCount = video_response['items'][0]['statistics']['viewCount']
 
 		return {
+				"title":title,
+				"image_url":image_url,
 				"time(in seconds)":int(total_time_in_seconds[3]),
 				"commentCount":int(commentCount),
 				"dislikeCount":int(dislikeCount),
@@ -121,4 +132,4 @@ class Video:
 			}
 
 # v = Video(video_url = "https://www.youtube.com/watch?v=PUHjqT3xcTs&list=PLxt59R_fWVzT9bDxA76AHm3ig0Gg9S3So&index=3")
-# print(v.video_size())
+# print(v.video_details())

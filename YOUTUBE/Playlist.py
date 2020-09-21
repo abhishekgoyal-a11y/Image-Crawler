@@ -45,11 +45,12 @@ class Platlist:
 
 	def Total_Size(self):
 		total_size = 0 
+		print(f"Total {len(self.video_urls)} Videos Found!")
 		for video_url in self.video_urls:
 			total_size+=Video(video_url=video_url).video_size()
-			print(total_size)
+		return total_size
 
 
 p = Platlist(playlist_url="https://www.youtube.com/watch?v=ZzWaow1Rvho&list=PLxt59R_fWVzT9bDxA76AHm3ig0Gg9S3So")
-p.Total_Size()
+print(p.Total_Size())
 
