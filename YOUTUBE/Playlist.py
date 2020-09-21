@@ -50,7 +50,37 @@ class Platlist:
 			total_size+=Video(video_url=video_url).video_size()
 		return total_size
 
+	def Playlist_Detail(self):
+
+		time_in_second = 0
+		total_views = 0
+		total_likes = 0
+		total_dislikes = 0
+		total_comments = 0
+
+		for video_url in self.video_urls:
+			video_details = Video(video_url).video_details()
+			total_comments+=video_details['commentCount']
+			total_dislikes+=video_details['dislikeCount']
+			total_likes+=video_details['likeCount']
+			total_views+=video_details['viewCount']
+			time_in_second+=video_details['time(in seconds)']
+
+		minutes,seconds = divmod(int(time_in_second),60)
+		hours,minutes = divmod(minutes,60)
+
+		return{
+			"total_videos":len(self.video_urls),
+			"hours":hours,
+			"minutes":minutes,
+			"seconds":seconds,
+			"commentCount":total_comments,
+			"dislikeCount":total_dislikes,
+			"likeCount":total_likes,
+			"viewCount":total_views
+			}
+
 
 p = Platlist(playlist_url="https://www.youtube.com/watch?v=ZzWaow1Rvho&list=PLxt59R_fWVzT9bDxA76AHm3ig0Gg9S3So")
-print(p.Total_Size())
+print(p.Playlist_Detail())
 
