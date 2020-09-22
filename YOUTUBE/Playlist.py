@@ -65,6 +65,7 @@ class Platlist:
 					"time(in seconds)":video_details['time(in seconds)'],
 					"image_url":video_details['image_url'],
 					"title":video_details['title'],
+					"video_url":video_url
 				}
 			)
 		return self.playlist_details
@@ -100,7 +101,34 @@ class Platlist:
 			"Total Views":self.total_views
 			}
 
+	def Popular_Videos(self,**kwargs):
+		self.popular_videos = []
+		if "views"==kwargs['param']:
+			video_views = {}
+			for i in self.Playlist_Depth_Detail():
+				video_views[i['total_views']]=i
+
+			for i in sorted(video_views.keys()):
+				self.popular_videos.append(video_views[i])
+			if "videos" in kwargs:
+				return self.popular_videos[0:kwargs["videos"]]
+			else:
+				return self.popular_videos
+		elif "likes"==kwargs['param']:
+			video_views = {}
+			for i in self.Playlist_Depth_Detail():
+				video_views[i['total_likes']]=i
+
+			for i in sorted(video_views.keys()):
+				self.popular_videos.append(video_views[i])
+			if "videos" in kwargs:
+				return self.popular_videos[0:kwargs["videos"]]
+			else:
+				return self.popular_videos
+
+
+
 
 p = Platlist(playlist_url="https://www.youtube.com/watch?v=Wo5dMEP_BbI&list=PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3")
-pprint(p.Playlist_Details())
+pprint(p.Popular_Videos(param="likes",videos=6))
 
