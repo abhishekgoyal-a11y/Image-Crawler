@@ -42,6 +42,26 @@ class Platlist:
 
 				if not self.nextPageToken:
 					break
+		elif self.playlist_url==None and self.playlist_id!=None:
+			youtube = build('youtube','v3',developerKey=self.api_key)
+			
+			while True:
+				pl_request = youtube.playlistItems().list(
+					part='contentDetails',
+					playlistId=self.playlist_id,
+					maxResults=50,
+					pageToken=self.nextPageToken
+					)
+				self.pl_response = pl_request.execute()
+
+				for item in self.pl_response['items']:
+					self.video_ids.append(item['contentDetails']['videoId'])
+					self.video_urls.append(f"https://www.youtube.com/watch?v={item['contentDetails']['videoId']}")
+
+				self.nextPageToken = self.pl_response.get('nextPageToken')
+
+				if not self.nextPageToken:
+					break
 
 	def Total_Size(self):
 		total_size = 0 
@@ -126,9 +146,60 @@ class Platlist:
 			else:
 				return self.popular_videos
 
+	def Playlist_Download(self,no_of_videos=None,froms=None,tos=None,list_of_video=None):
+		if no_of_videos==None and froms==None and tos==None and list_of_video==None:
+			# Video(video_url=self.video_urls).video_download()
+			return self.video_urls
+
+		elif no_of_videos!=None and froms==None and tos==None and list_of_video==None:
+			return self.video_urls[0:no_of_videos]
+
+		elif no_of_videos==None and froms!=None and tos!=None and list_of_video==None:
+			try:
+				if froms>0 and tos>0:
+					return self.video_urls[froms-1:tos]
+				elif froms<=0:
+					return "froms can not be zero or negative!"
+				elif tos<=0:
+					return "tos can not be zero or negative!"
+			except TypeError:
+				return "Invalid Arguement!"
+
+		elif no_of_videos==None and froms!=None and tos==None and list_of_video==None:
+			try:
+				if froms>0:
+					return self.video_urls[froms-1:]
+				elif froms<=0:
+					return "froms can not be zero or negative!"
+			except TypeError:
+				return "Invalid Arguement!"
+
+		elif no_of_videos==None and froms==None and tos==None and list_of_video!=None:
+			video_list = []
+			if list_of_video!=[]:
+				for video in list_of_video:
+					if isinstance(video ,int):
+						if 0<video<=len(self.video_urls):
+							video_list.append(self.video_urls[video-1])
+						else:
+							return "Value can not be negative or zero!"
+							break
+					else:
+						return "Invalid List!"
+						break
+				return video_list
+			else:
+				return "list of video is empty!"
 
 
 
-p = Platlist(playlist_url="https://www.youtube.com/watch?v=Wo5dMEP_BbI&list=PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3")
-pprint(p.Popular_Videos(param="likes",videos=6))
 
+
+
+p = Platlist(playlist_id="PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3")
+print(p.Playlist_Download())
+['https://www.youtube.com/watch?v=Wo5dMEP_BbI',
+ 'https://www.youtube.com/watch?v=lGLto9Xd7bU',
+  'https://www.youtube.com/watch?v=tMrbN67U9d4',
+   'https://www.youtube.com/watch?v=TEWy9vZcxW4',
+    'https://www.youtube.com/watch?v=gmjzbpSVY1A']
