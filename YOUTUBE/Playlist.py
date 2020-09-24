@@ -2,7 +2,7 @@ from googleapiclient.discovery import build
 from pprint import pprint
 from Video import Video
 
-class Platlist:
+class Playlist:
 	def __init__(self,playlist_url=None,playlist_id=None):
 		self.playlist_url = playlist_url
 		self.playlist_id = playlist_id
@@ -191,15 +191,5 @@ class Platlist:
 			else:
 				return "list of video is empty!"
 
-
-
-
-
-
-p = Platlist(playlist_id="PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3")
-print(p.Playlist_Download())
-['https://www.youtube.com/watch?v=Wo5dMEP_BbI',
- 'https://www.youtube.com/watch?v=lGLto9Xd7bU',
-  'https://www.youtube.com/watch?v=tMrbN67U9d4',
-   'https://www.youtube.com/watch?v=TEWy9vZcxW4',
-    'https://www.youtube.com/watch?v=gmjzbpSVY1A']
+# p = Playlist(playlist_url="https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS")
+# pprint(p.Popular_Videos(param='views',videos=3))

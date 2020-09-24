@@ -130,6 +130,3 @@ class Video:
 				"viewCount":int(viewCount),
 				"time":[total_time_in_seconds[0],total_time_in_seconds[1],total_time_in_seconds[2]]
 			}
-
-# v = Video(video_url = "https://www.youtube.com/watch?v=PUHjqT3xcTs&list=PLxt59R_fWVzT9bDxA76AHm3ig0Gg9S3So&index=3")
-# print(v.video_details())
