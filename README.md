@@ -1,4 +1,49 @@
-# Image Crawler
+# Web Crawler
+
+# 1. YOUTUBE
+    (A) CHANNEL
+         REQUIRE CHANNEL USERNAME OR ID OR URL
+            Like:-
+              channel url="https://www.youtube.com/user/schafer5" or "https://www.youtube.com/channel/UC4JX40jDee_tINbkjycV4Sg"
+              channel username = "schafer5"
+              channel id = "UC4JX40jDee_tINbkjycV4Sg"
+         DETAILS INCLUDE
+              1. Number of Playlist
+              2. Channel Details
+                   1.total subscribers, videos, views
+                   2.all playlists titles, urls, image urls
+                   
+    (B) PLAYLIST
+         REQUIRE PLAYLIST ID OR URL
+            Like:-
+              playlist url:-"https://www.youtube.com/watch?v=vnd3RfeG3NM&list=PLzMcBGfZo4-lkJr3sqpikNyVzbNZLRiT3" or 
+                            "https://www.youtube.com/playlist?list=PLzMcBGfZo4-lkJr3sqpikNyVzbNZLRiT3"
+              playlist id:- "PLzMcBGfZo4-lkJr3sqpikNyVzbNZLRiT3"
+         DETAILS INCLUDE
+              1. Size of Playlist (IN BYTES)
+              2. Playlist Details
+                   1.VIDEO WISE
+                        (A) total comments,views
+                        (B) total likes,dislikes
+                        (C) time in seconds
+                        (D) video, image urls
+                        (E) video title
+                   1.PLAYLIST WISE
+                        (A) total comments,views
+                        (B) total likes,dislikes
+                        (C) time (hours,minutes,seconds)
+                        (F) total videos
+              3.Popular videos
+                 FILTER BY:-
+                    1.Views
+                    2.Likes
+              4.Playlist Downlaod
+                  (A)number of videos
+                  (B)from this video to this video
+                  (C)till this video
+                  (D)from this video
+                  (E)specific video like 1,5,7 etc...
+    (C) VIDEO
 
 First part will download only one image
 
