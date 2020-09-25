@@ -101,6 +101,10 @@ class Channel:
 
 	# CHANNEL DEPTH DETAILS
 	# REQUIRE ONLY CHANNEL ID
+	# DETAILS INCLUDE
+	# 1.playlists title
+	# 2.playlists url
+	# 3.playlists image url
 
 	def Channel_Depth_details(self,channel_id):
 		pl_request = self.youtube.playlists().list(
