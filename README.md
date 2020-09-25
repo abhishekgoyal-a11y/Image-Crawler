@@ -32,7 +32,7 @@
                         (A) total comments,views
                         (B) total likes,dislikes
                         (C) time (hours,minutes,seconds)
-                        (F) total videos
+                        (D) total videos
               3.Popular videos
                  FILTER BY:-
                     1.Views
@@ -44,6 +44,20 @@
                   (D)from this video
                   (E)specific video like 1,5,7 etc...
     (C) VIDEO
+         REQUIRE VIDEO ID OR URL
+            Like:-
+              video url="https://www.youtube.com/watch?v=zmdjNSmRXF4"
+              video id = "zmdjNSmRXF4"
+         DETAILS INCLUDE
+              1. Video Details
+                  (A)video title
+                  (B)video image url
+                  (C)time in seconds
+                  (D)total comments,views
+                  (E)total likes,dislikes
+                  (F)time(hours:minutes:seconds)
+              2.Donwlaod video
+              3.Video Size(IN BYTES)
 
 First part will download only one image
 
