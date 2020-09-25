@@ -1,7 +1,15 @@
+
+#################################################### LIBRARY IMPORTED ###########################################################
+
 from googleapiclient.discovery import build
 from Video import Video
 
+#################################################### PLAYLIST ###########################################################
+
 class Playlist:
+
+	# EITHER GIVE PLAYLIST URL OR PLAYLIST ID
+
 	def __init__(self,playlist_url=None,playlist_id=None):
 		self.playlist_url = playlist_url
 		self.playlist_id = playlist_id
@@ -15,6 +23,8 @@ class Playlist:
 		self.total_size = 0
 
 		self.fetching_urls_id()
+
+	# FETCHING ALL VIDEOS URLS AND IDS
 
 	def fetching_urls_id(self):
 		if self.playlist_url!=None and self.playlist_id==None:
@@ -62,12 +72,21 @@ class Playlist:
 				if not self.nextPageToken:
 					break
 
+	# SIZE OF PLAYLIST (IN BYTES)
+
 	def Total_Size(self):
 		total_size = 0 
 		print(f"Total {len(self.video_urls)} Videos Found!")
 		for video_url in self.video_urls:
 			total_size+=Video(video_url=video_url).video_size()
 		return total_size
+
+	# PLAYLIST DEPTH DETAILS (GIVE VIDEO WISE)
+	# 1.total comments, views, dislikes, likes
+	# 3.time in seconds
+	# 4.image urls
+	# 5.title of videos
+	# 6.video urls
 
 	def Playlist_Depth_Detail(self):
 
@@ -88,6 +107,12 @@ class Playlist:
 				}
 			)
 		return self.playlist_details
+
+	# PLAYLIST DETAILS 
+	# 1.total videos
+	# 3.time(hours,minutes,seconds)
+	# 4.total comments, views
+	# 4.total likes, dislikes
 
 	def Playlist_Details(self):
 
@@ -120,6 +145,24 @@ class Playlist:
 			"Total Views":self.total_views
 			}
 
+	# POPULAR VIDEOS OF PLAYLIST
+
+	# FILTER BY
+		# 1.views
+		# 2.likes
+
+	# pass "videos" arguement for how many number of popular videos you want.
+
+	# Example:-
+	# 1.for filtering by views, "Popular_Videos(views)"
+	# 	In playlist 4 videos are there
+	# 	top 2 videos from playlist "Popular_Videos(views,videos=2)"
+	
+	# 2.for filtering by likes, "Popular_Videos(likes)"
+	# 	In playlist 4 videos are there
+	# 	top 2 videos from playlist "Popular_Videos(likes,videos=2)"
+
+
 	def Popular_Videos(self,**kwargs):
 		self.popular_videos = []
 		if "views"==kwargs['param']:
@@ -144,6 +187,28 @@ class Playlist:
 				return self.popular_videos[0:kwargs["videos"]]
 			else:
 				return self.popular_videos
+
+	# Playlist Download
+
+	# Atrributes:-	
+		# 1.no_of_videos	
+		# 2.froms	
+		# 3.tos	
+		# 4.list_of_video	
+
+	# 1. no_of_videos:-how number of videos you want to downlaod	
+	# 2. froms:-from which video you want to downlaod	
+	# 3. tos:-till which video you want to downlaod	
+	# 4. if you want to downlaod only one specific video from playlist ,pass same value in froms and tos	
+	# 5. if you want to downlaod only specific number of video ,pass list of number in list_of_video	
+
+	# Example	
+	# In Playlist 4 videos are there(v1,v2,v3,v4)	
+	# 1. For download all videos ,don't pass any attribute	
+	# 2. for download 2 videos ,pass 2 in no_of_videos (no_of_videos=2) It will downlaod v1 and v2	
+	# 3. for downlaod 2 and 3rd video, pass 2 in froms and 3 in tos (froms=2,tos=3), it will downlaod v2 and v3	
+	# 4. for download all videos from 2nd video, pass 2 in froms (froms=2), it will download v2,v3 and v4.	
+	# 5. for download v1 and v4 video, pass [1,4] in list_of_video (list_of_video=[1,4]), it will download only v1 and v4
 
 	def Playlist_Download(self,no_of_videos=None,froms=None,tos=None,list_of_video=None):
 		if no_of_videos==None and froms==None and tos==None and list_of_video==None:

@@ -1,16 +1,21 @@
 
+#################################################### LIBRARY IMPORTED ###########################################################
+
 import youtube_dl
 import pafy
 from googleapiclient.discovery import build
 import re
 from datetime import timedelta
 
+# regular expression
 
 def regex(text,pattern):
 	pattern = re.compile(pattern)
 	matches = pattern.findall(text)
 	return matches
 
+# CONVERTING INTO SECONDS
+# REQUIRE (hours,minutes,seconds)
 
 def time_in_seconds(hours,minutes,seconds):
 
@@ -31,7 +36,12 @@ def time_in_seconds(hours,minutes,seconds):
 	return hours,minutes,seconds,video_seconds
 
 
+#################################################### VIDEO ###########################################################
+
 class Video:
+
+	# EITHER GIVE VIDEO URL OR VIDEO ID
+
 	def __init__(self,video_url=None,video_id=None):
 		self.video_url = video_url
 		self.video_id = video_id
@@ -39,6 +49,7 @@ class Video:
 		self.api_key = 'AIzaSyCFs-0PRFSEiRqPqXoorAXoxR8p7e03jvM'
 
 		self.video_url_id()
+
 
 	def video_url_id(self):
 		if self.video_url==None and self.video_id!=None:
@@ -69,12 +80,16 @@ class Video:
 		elif self.video_url!=None and self.video_id!=None:
 			return 
 
+	# VIDEO DOWNLOAD
+
 	def video_download(self):	
 		try:
 			with youtube_dl.YoutubeDL({}) as ydl:
 				ydl.download(self.video_url)
 		except:
 			return "Error:- Invalid URL or Internet is not Connected!"
+
+	# VIDEO SIZE(IN BYTES)
 
 	def video_size(self):
 		video = pafy.new(self.video_url[0]) 
@@ -88,6 +103,14 @@ class Video:
 
 		value = stream.get_filesize() 
 		return value
+
+	# VIDEO DETAILS
+	# 1.video title
+	# 2.image url
+	# 3.time in seconds
+	# 4.total comments,views
+	# 5.total likes,dislikes
+	# 6.total time(H:M:S)
 
 	def video_details(self):
 		youtube = build('youtube','v3',developerKey=self.api_key)

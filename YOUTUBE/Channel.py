@@ -1,8 +1,16 @@
+
+#################################################### LIBRARY IMPORTED ###########################################################
+
 from googleapiclient.discovery import build
 from Video import Video
 from Playlist import Playlist
 
+#################################################### CHANNEL ###########################################################
+
 class Channel:
+
+	# EITHER GIVE CHANNEL USERNAME OR ID OR URL
+
 	def __init__(self,channel_username=None,channel_id=None,channel_url=None):
 		self.channel_username = channel_username
 		self.channel_id = channel_id
@@ -11,6 +19,8 @@ class Channel:
 		self.api_key = 'AIzaSyCFs-0PRFSEiRqPqXoorAXoxR8p7e03jvM'
 
 		self.channel_url_id_username()
+
+	# FETCHING ALL VIDEO URLS, USERNAME AND ID 
 
 	def channel_url_id_username(self):
 
@@ -45,9 +55,20 @@ class Channel:
 
 		self.ch_response = self.ch_request.execute()
 
+	# COUNT NUMBER OF PLAYLIST
+	# REQUIRE ONLY CHANNEL ID
+
 	def no_of_playlist(self,channel_id=None):
 		return len(self.Channel_Depth_details(channel_id))
 
+	# CHANNEL DETAILS INCLUDE
+	# 1.total subscribers
+	# 2.total videos
+	# 3.total views
+
+	# For more details set depth to be True
+	# it includes, playlists images,url,title
+	
 	def Channel_details(self,depth=None):
 		if self.channel_id!=None and self.channel_username==None:
 			if depth==None or depth==False:
@@ -78,6 +99,9 @@ class Channel:
 			else:
 				return "No Playlist Found!"
 
+	# CHANNEL DEPTH DETAILS
+	# REQUIRE ONLY CHANNEL ID
+
 	def Channel_Depth_details(self,channel_id):
 		pl_request = self.youtube.playlists().list(
 					part='contentDetails,snippet',
@@ -89,6 +113,13 @@ class Channel:
 		details = []
 
 		for r in pl_response['items']:
-			details.append((r['snippet']['localized']['title'],r['snippet']['thumbnails']['high']['url']))
-		return details
+			details.append(
+					(
+						r['snippet']['localized']['title'],
+						r['snippet']['thumbnails']['high']['url'],
+						"https://www.youtube.com/playlist?list="+str(r['id'])
 
+					)
+				)
+		return details
+		
