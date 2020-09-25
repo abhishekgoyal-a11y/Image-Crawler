@@ -59,15 +59,17 @@
               2.Donwload video
               3.Video Size(IN BYTES)
 # 2. IMAGE
-(A) FIRST PART(downlaod ony one image)
-    REQUIRE IMAGE ADDRESS
-        Example:- Amirkhan Image
-        Image Address:- https://upload.wikimedia.org/wikipedia/commons/b/ba/Aamir_Khan_From_The_NDTV_Greenathon_at_Yash_Raj_Studios_%2811%29.jpg
+    (A) FIRST PART(downlaod ony one image)
+            REQUIRE IMAGE ADDRESS
+                Example:- Amirkhan Image
+                Like:-
+                    Image Address:- https://upload.wikimedia.org/wikipedia/commons/b/ba/Aamir_Khan_From_The_NDTV_Greenathon_at_Yash_Raj_Studios_%2811%29.jpg
 
-(A) FIRST PART(downlaod all images)
-    REQUIRE WEB URL
-        Example:- Amirkhan Images
-        URL:- https://www.google.com/search?q=amirkhan&rlz=1C1CHBF_enIN828IN828&sxsrf=ALeKk005HXD_iy7Ftgjx9J-bF8i0NKfx9Q:1600179467455&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiL4e-FrevrAhUBXn0KHS6CD9MQ_AUoAnoECB8QBA&biw=1366&bih=625
+    (B) FIRST PART(downlaod all images)
+            REQUIRE WEB URL
+                Example:- Amirkhan Images
+                Like:-
+                    URL:- https://www.google.com/search?q=amirkhan&rlz=1C1CHBF_enIN828IN828&sxsrf=ALeKk005HXD_iy7Ftgjx9J-bF8i0NKfx9Q:1600179467455&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiL4e-FrevrAhUBXn0KHS6CD9MQ_AUoAnoECB8QBA&biw=1366&bih=625
 
 
 # Youtube API(RESOURCES)
