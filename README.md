@@ -56,7 +56,7 @@
                   (D)total comments,views
                   (E)total likes,dislikes
                   (F)time(hours:minutes:seconds)
-              2.Donwlaod video
+              2.Donwload video
               3.Video Size(IN BYTES)
 
 First part will download only one image
