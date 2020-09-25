@@ -65,7 +65,7 @@
                 Like:-
                     Image Address:- https://upload.wikimedia.org/wikipedia/commons/b/ba/Aamir_Khan_From_The_NDTV_Greenathon_at_Yash_Raj_Studios_%2811%29.jpg
 
-    (B) FIRST PART(downlaod all images)
+    (B) SECONDS PART(downlaod all images)
             REQUIRE WEB URL
                 Example:- Amirkhan Images
                 Like:-
