@@ -1,5 +1,4 @@
 from googleapiclient.discovery import build
-from pprint import pprint
 from Video import Video
 from Playlist import Playlist
 
@@ -47,49 +46,49 @@ class Channel:
 		self.ch_response = self.ch_request.execute()
 
 	def no_of_playlist(self,channel_id=None):
+		return len(self.Channel_Depth_details(channel_id))
+
+	def Channel_details(self,depth=None):
+		if self.channel_id!=None and self.channel_username==None:
+			if depth==None or depth==False:
+				total_subscriber = self.ch_response['items'][0]['statistics']['subscriberCount']
+				total_videos = self.ch_response['items'][0]['statistics']['videoCount']
+				total_views = self.ch_response['items'][0]['statistics']['viewCount']
+				number_of_playlist = self.no_of_playlist(channel_id=self.channel_id)
+				return (total_subscriber,total_views,total_videos,number_of_playlist)
+
+			elif depth==True:
+				return self.Channel_Depth_details(self.channel_id)
+
+
+		elif self.channel_id==None and self.channel_username!=None:
+			if "items" in self.ch_response:
+				channel_id = self.ch_response['items'][0]['id']
+				if depth==None or depth==False:
+					total_subscriber = self.ch_response['items'][0]['statistics']['subscriberCount']
+					total_videos = self.ch_response['items'][0]['statistics']['videoCount']
+					total_views = self.ch_response['items'][0]['statistics']['viewCount']
+		
+					number_of_playlist = self.no_of_playlist(channel_id=channel_id)
+					return (total_subscriber,total_views,total_videos,number_of_playlist)
+
+				elif depth==True:
+					return self.Channel_Depth_details(channel_id)
+
+			else:
+				return "No Playlist Found!"
+
+	def Channel_Depth_details(self,channel_id):
 		pl_request = self.youtube.playlists().list(
 					part='contentDetails,snippet',
 					channelId=channel_id,
 					maxResults=50
 					)
 		pl_response = pl_request.execute()
-		return len(pl_response['items'])
 
-	def Channel_details(self):
-		if self.channel_id!=None and self.channel_username==None:
-			total_subscriber = self.ch_response['items'][0]['statistics']['subscriberCount']
-			total_videos = self.ch_response['items'][0]['statistics']['videoCount']
-			total_views = self.ch_response['items'][0]['statistics']['viewCount']
-			number_of_playlist = self.no_of_playlist(channel_id=self.channel_id)
+		details = []
 
-			return (total_subscriber,total_views,total_videos,'s',number_of_playlist)
+		for r in pl_response['items']:
+			details.append((r['snippet']['localized']['title'],r['snippet']['thumbnails']['high']['url']))
+		return details
 
-		elif self.channel_id==None and self.channel_username!=None:
-			if "items" in self.ch_response:
-				total_subscriber = self.ch_response['items'][0]['statistics']['subscriberCount']
-				total_videos = self.ch_response['items'][0]['statistics']['videoCount']
-				total_views = self.ch_response['items'][0]['statistics']['viewCount']
-				channel_id = self.ch_response['items'][0]['id']
-
-				number_of_playlist = self.no_of_playlist(channel_id=channel_id)
-				return (total_subscriber,total_views,total_videos,number_of_playlist)
-			else:
-				return "No Playlist Found!"
-
-
-
-
-
-
-c = Channel(channel_username="schafer5")
-
-print(c.Channel_details())
-
-
-channel_url = "https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC5w48gBQ"
-
-channel_id = "UCICWIYEx2mo4wYZzLwJ7wVw"
-
-channel_url = "https://www.youtube.com/user/sentdex"
-
-channel_username = "sentdex"

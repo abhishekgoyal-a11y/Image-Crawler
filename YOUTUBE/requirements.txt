@@ -1,4 +1,5 @@
-googleapiclient.discovery
+google-api-python-client
+youtube_dl
+pafy
 re
-requests
 datetime

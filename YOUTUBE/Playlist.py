@@ -1,5 +1,4 @@
 from googleapiclient.discovery import build
-from pprint import pprint
 from Video import Video
 
 class Playlist:
@@ -190,6 +189,3 @@ class Playlist:
 				return video_list
 			else:
 				return "list of video is empty!"
-
-# p = Playlist(playlist_url="https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS")
-# pprint(p.Popular_Videos(param='views',videos=3))
