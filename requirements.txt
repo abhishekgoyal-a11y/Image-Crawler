@@ -1,0 +1,12 @@
+requests
+bs4
+tkinter
+PIL
+threading
+resizeimage
+os
+google-api-python-client
+youtube_dl
+pafy
+re
+datetime
