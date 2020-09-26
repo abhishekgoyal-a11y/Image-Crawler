@@ -71,7 +71,7 @@
                 Like:-
                     URL:- https://www.google.com/search?q=amirkhan&rlz=1C1CHBF_enIN828IN828&sxsrf=ALeKk005HXD_iy7Ftgjx9J-bF8i0NKfx9Q:1600179467455&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiL4e-FrevrAhUBXn0KHS6CD9MQ_AUoAnoECB8QBA&biw=1366&bih=625
 
-# 3. Price Tracker App (https://github.com/abhishekgoyal-a11y/Price-tracker-app/tree/master/education%20api)
+# 3. [Price Tracker App](https://github.com/abhishekgoyal-a11y/Price-tracker-app/tree/master/education%20api)
     (A) Ecommerce Website(Amazon,Ebay,Flipkart,Shopclues,Snapdeal)
             REQUIRE PRODUCT URL
                 Example:- Redmi Note 9 Pro
