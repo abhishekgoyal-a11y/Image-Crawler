@@ -71,7 +71,26 @@
                 Like:-
                     URL:- https://www.google.com/search?q=amirkhan&rlz=1C1CHBF_enIN828IN828&sxsrf=ALeKk005HXD_iy7Ftgjx9J-bF8i0NKfx9Q:1600179467455&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiL4e-FrevrAhUBXn0KHS6CD9MQ_AUoAnoECB8QBA&biw=1366&bih=625
 
-
+# 3. Price Tracker App (https://github.com/abhishekgoyal-a11y/Price-tracker-app/tree/master/education%20api)
+    (A) Ecommerce Website(Amazon,Ebay,Flipkart,Shopclues,Snapdeal)
+            REQUIRE PRODUCT URL
+                Example:- Redmi Note 9 Pro
+                Like:-
+                    URL:- https://www.amazon.in/Test-Exclusive-549/dp/B077PWBC78/ref=sxin_3?ascsubtag=amzn1.osa.8e66cb3e-b6fd-442f-941a-90aa55c4b231.A21TJRUUN4KGV.en_IN&creativeASIN=B077PWBC78&cv_ct_cx=mobiles&cv_ct_id=amzn1.osa.8e66cb3e-b6fd-442f-941a-90aa55c4b231.A21TJRUUN4KGV.en_IN&cv_ct_pg=search&cv_ct_wn=osp-single-source-gl-ranking&dchild=1&keywords=mobiles&linkCode=oas&pd_rd_i=B077PWBC78&pd_rd_r=400e04f7-8be0-4235-a63d-e5ccbe9986c7&pd_rd_w=TY55j&pd_rd_wg=lOANA&pf_rd_p=f703f81b-4f72-40ee-805a-081e743c7df4&pf_rd_r=FZ6TZSRMQPMPKJNT67SB&qid=1601110200&sr=1-1-5b72de9d-29e4-4d53-b588-61ea05f598f4&tag=technologytoday-21
+                OUTPUT:-
+                    PRODUCT NAME:- Redmi Note 9 Pro (Interstellar Black, 4GB RAM, 64GB Storage) - Latest 8nm Snapdragon 720G & Gorilla Glass 5 Protection
+                    PRODUCT PRICE:- 13,999.00 
+            Similarly you can search any url 
+    (A) Elearning Website(Coursera,Edx,Udemy)
+            REQUIRE COURSE URL
+                Example:- Python programming
+                Like:-
+                    URL:- https://www.udemy.com/course/python-the-complete-python-developer-course/
+                OUTPUT:-
+                    COURSE NAME:- Learn Python Programming Masterclass
+                    COURSE PRICE:- ₹8,640
+            Similarly you can search any url 
+                    
 # Youtube API(RESOURCES)
 
 https://console.developers.google.com/apis/credentials?project=ambient-isotope-289805
