@@ -81,7 +81,7 @@
                     PRODUCT NAME:- Redmi Note 9 Pro (Interstellar Black, 4GB RAM, 64GB Storage) - Latest 8nm Snapdragon 720G & Gorilla Glass 5 Protection
                     PRODUCT PRICE:- 13,999.00 
             Similarly you can search any url 
-    (A) Elearning Website(Coursera,Edx,Udemy)
+    (B) Elearning Website(Coursera,Edx,Udemy)
             REQUIRE COURSE URL
                 Example:- Python programming
                 Like:-
