@@ -1,12 +1,9 @@
 requests
 bs4
-tkinter
-PIL
-threading
-resizeimage
-os
+tk
+Pillow
+resize-image
 google-api-python-client
 youtube_dl
 pafy
-re
 datetime

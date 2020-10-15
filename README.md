@@ -99,6 +99,6 @@ http://googleapis.github.io/google-api-python-client/docs/dyn/youtube_v3.html
 
 http://googleapis.github.io/google-api-python-client/docs/dyn/youtube_v3.channels.html
 
-https://developers.google.com/youtube/v3/docs/videos/list
+https://developers.google.com/youtube/v3/docs/
 
 https://developers.google.com/youtube/v3/getting-started

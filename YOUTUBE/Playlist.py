@@ -18,7 +18,7 @@ class Playlist:
 		self.video_ids = []
 		self.video_urls = []
 
-		self.api_key = 'AIzaSyCFs-0PRFSEiRqPqXoorAXoxR8p7e03jvM'
+		self.api_key = 'AIzaSyDbfB-C9-R__MFODWNCePbk2Uy1OseulKc'
 		
 		self.total_size = 0
 

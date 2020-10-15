@@ -46,7 +46,7 @@ class Video:
 		self.video_url = video_url
 		self.video_id = video_id
 		
-		self.api_key = 'AIzaSyCFs-0PRFSEiRqPqXoorAXoxR8p7e03jvM'
+		self.api_key = 'AIzaSyDbfB-C9-R__MFODWNCePbk2Uy1OseulKc'
 
 		self.video_url_id()
 
@@ -125,31 +125,35 @@ class Video:
 			id=self.video_id
 		)
 		video_response1 = video_request1.execute()
+		try:
+			title = video_response1['items'][0]['snippet']['localized']['title']
+			image_url = video_response1['items'][0]['snippet']['thumbnails']['high']['url']
 
-		title = video_response1['items'][0]['snippet']['localized']['title']
-		image_url = video_response1['items'][0]['snippet']['thumbnails']['high']['url']
+			published_at = video_response1['items'][0]['snippet']['publishedAt']
 
-		duration = video_response['items'][0]['contentDetails']['duration']
+			duration = video_response['items'][0]['contentDetails']['duration']
 
-		hours = regex(duration,f'(\d+)H')
-		minutes = regex(duration,f'(\d+)M')
-		seconds = regex(duration,f'(\d+)S')
+			hours = regex(duration,f'(\d+)H')
+			minutes = regex(duration,f'(\d+)M')
+			seconds = regex(duration,f'(\d+)S')
 
-		total_time_in_seconds = time_in_seconds(hours,minutes,seconds)
+			total_time_in_seconds = time_in_seconds(hours,minutes,seconds)
 
- 
-		commentCount = video_response['items'][0]['statistics']['commentCount']
-		dislikeCount = video_response['items'][0]['statistics']['dislikeCount']
-		likeCount = video_response['items'][0]['statistics']['likeCount']
-		viewCount = video_response['items'][0]['statistics']['viewCount']
+	 
+			commentCount = video_response['items'][0]['statistics']['commentCount']
+			dislikeCount = video_response['items'][0]['statistics']['dislikeCount']
+			likeCount = video_response['items'][0]['statistics']['likeCount']
+			viewCount = video_response['items'][0]['statistics']['viewCount']
 
-		return {
-				"title":title,
-				"image_url":image_url,
-				"time(in seconds)":int(total_time_in_seconds[3]),
-				"commentCount":int(commentCount),
-				"dislikeCount":int(dislikeCount),
-				"likeCount":int(likeCount),
-				"viewCount":int(viewCount),
-				"time":[total_time_in_seconds[0],total_time_in_seconds[1],total_time_in_seconds[2]]
-			}
+			return {
+					"title":title,
+					"image_url":image_url,
+					"time(in seconds)":int(total_time_in_seconds[3]),
+					"commentCount":int(commentCount),
+					"dislikeCount":int(dislikeCount),
+					"likeCount":int(likeCount),
+					"viewCount":int(viewCount),
+					"time":[total_time_in_seconds[0],total_time_in_seconds[1],total_time_in_seconds[2]],
+					'published_at':published_at
+				}
+		except:pass
