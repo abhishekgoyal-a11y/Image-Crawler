@@ -46,7 +46,11 @@ class Video:
 		self.video_url = video_url
 		self.video_id = video_id
 		
+<<<<<<< HEAD
 		self.api_key = 'AIzaSyDbfB-C9-R__MFODWNCePbk2Uy1OseulKc'
+=======
+		self.api_key = API_KEY
+>>>>>>> 6b983af29ce1419271f69c5d08179f442193155a
 
 		self.video_url_id()
 

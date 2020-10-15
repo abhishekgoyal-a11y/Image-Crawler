@@ -16,7 +16,11 @@ class Channel:
 		self.channel_id = channel_id
 		self.channel_url = channel_url
 
+<<<<<<< HEAD
 		self.api_key = 'AIzaSyDbfB-C9-R__MFODWNCePbk2Uy1OseulKc'
+=======
+		self.api_key = API_KEY
+>>>>>>> 6b983af29ce1419271f69c5d08179f442193155a
 
 		self.channel_url_id_username()
 
